@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job-Tracker</title>
+<!-- tailwind+dasyui -->
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link rel="stylesheet" href="style.css">
+
+<!-- font -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<style>
+    *{
+         font-family: "Outfit", sans-serif;
+    }
+
+    .btn-erro:hover{
+      background-color: red;
+      color: black;
+    }
+
+</style>
+
+<!-- font awsome -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body class="max-w-9/12 mt-2.5 mx-auto">
+    <header class="border-b-1 border-b-gray-300 pb-7">
+   <h1 class="text-2xl font-bold">Job Application Tracker</h1><br>
+   <section class="flex justify-between sm:flex-row gap-3">
+    <div class="nav-cards bg-base-200 h-[97px] pb-4 p-3 w-[359.33px] sm:w-[32%] rounded-xl">
+      <h2 class="text-xl" >Total</h2>
+      <div class="count text-2xl" id="total-count">8</div>
+    </div>
+    <div class="nav-cards bg-base-200 h-[97px] pb-4 p-3 w-[359.33px] sm:w-[32%] rounded-xl">
+      <h2 class="text-xl">Interview</h2>
+      <div class="count text-2xl text-green-500" id="interview-count">0</div>
+    </div>
+    <div class="nav-cards bg-base-200 h-[97px] pb-4 p-3 w-[359.33px] sm:w-[32%] rounded-xl">
+      <h2 class="text-xl">Rejected</h2>
+      <div class="count text-2xl text-red-500" id="rejected-count">0</div>
+    </div>
+   </section>
+    </header>
+    <main>
+      <section id="offers" class="space-y-3 mb-1 ">
+         <div class="flex justify-between">
+          <h1 class="text-2xl font-bold">Available Jobs</h1>
+          <P><span id="job-count">8</span> jobs</P>
+        </div>
+        <button id="all-btn"  onclick="hide('offers'); add3('all')" class="btn btn-primary w-[80px] h-[32px] mr-2.5">All</button>
+        <button  id="interview-btn"  onclick="hide('interviw'); add3('interviw') ; " class="btn btn-primary btn-soft w-[80px] h-[32px] mr-2.5">Interview</button>
+        <button id="rejected-btn"  onclick="hide('rejacted'); add3('rejacted')" class="btn btn-primary btn-soft w-[80px] h-[32px] mb-2.5">Rejected</button>
+      
+       
+        <!-- .offers*8 -->
+       <div id="rth-1">
+        <div id="offer-1" class="offers p-3   w-full h-full  bg-base-200 rounded-2xl relative space-y-1.5">
+          <h1 class=" text-2xl">Frontend Developer</h1>
+        <p class="text-gray-500">Junior Frontend Developer</p><br>
+      <p class="text-gray-500">Dhaka, Bangladesh | Full-Time | ৳25,000 – ৳40,000 / month</p>
+   <button id="badge-1" class="badge badge-primary badge-outline btn-soft flex flex-row  h-[36px]">Not Applied</button>
+  <p class="text-gray-500">Build modern and responsive user interfaces for websites and web applications using frontend technologies.</p><br>
+<button onclick="gBadge('badge-1'); interview('offer-1'); add2('rth-1')" class="w-[97px] h-[36px] mr-1 btn btn-outline btn-success">interview</button><div onclick="badge('badge-1'); reject('offer-1');add1('rth-1')" class="w-[97px] h-[36px] btn btn-outline btn-error">Rejected</div>
+<button onclick="remove('offer-1')" class="btn btn-erro max-w-8 max-h-8 p-0.5 border border-gray-200 text-gray-500 rounded-4xl absolute top-2.5 right-2.5 "><i class="fa-regular fa-trash-can"></i></button>
+</div>
+</div>
+ <div id="rth-2">
+        <div id="offer-2" class="offers p-3  w-full h-full bg-base-200 rounded-2xl relative space-y-1.5">
+          <h1 class=" text-2xl">Backend Developer</h1>
+        <p class="text-gray-500">Node.js Backend Developer</p><br>
+      <p class="text-gray-500">Remote | Full-Time | ৳40,000 – ৳70,000 / month</p>
+   <button id="badge-2" class="badge badge-primary badge-soft flex flex-row  h-[36px]">Not Applied</button>
+  <p class="text-gray-500">Develop server-side logic, manage databases and ensure high performance of applications.</p><br>
+<button onclick="gBadge('badge-2'); interview('offer-2');add2('rth-2') " class="w-[97px] h-[36px] mr-1 btn btn-outline btn-success">interview</button><div onclick="badge('badge-2'); reject('offer-2'); add1('rth-2')" class="w-[97px] h-[36px] btn btn-outline btn-error">Rejected</div>
+<button onclick="remove('offer-2')" class="btn btn-erro max-w-8 max-h-8 p-0.5 border border-gray-200 text-gray-500 rounded-4xl absolute top-2.5 right-2.5 "><i class="fa-regular fa-trash-can"></i></button>
+</div></div>
+
+ <div id="rth-3">
+        <div id="offer-3" class="offers p-3 w-full h-full bg-base-200 rounded-2xl relative space-y-1.5">
+          <h1 class=" text-2xl">UI/UX Designer</h1>
+        <p class="text-gray-500">Creative UI/UX Designer</p><br>
+      <p class="text-gray-500">Dhaka, Bangladesh | Contract | ৳20,000 – ৳35,000 / month</p>
+   <button id="badge-3" class="badge badge-primary badge-soft flex flex-row  h-[36px]">Not Applied</button>
+  <p class="text-gray-500">Design visually appealing and user-friendly interfaces for web and mobile applications.</p><br>
+<button onclick="gBadge('badge-3'); interview('offer-3'); add2('rth-3')" class="w-[97px] h-[36px] mr-1 btn btn-outline btn-success">interview</button><div onclick="badge('badge-3'); reject('offer-3'); add1('rth-3')" class="w-[97px] h-[36px] btn btn-outline btn-error">Rejected</div>
+<button onclick="remove('offer-3')" class="btn btn-erro max-w-8 max-h-8 p-0.5 border border-gray-200 text-gray-500 rounded-4xl absolute top-2.5 right-2.5  "><i class="fa-regular fa-trash-can"></i></button>
+</div></div>
+
+
+<div id="rth-4">
+        <div id="offer-4" class="offers p-3 w-full h-full bg-base-200 rounded-2xl relative space-y-1.5">
+          <h1 class=" text-2xl">Full Stack Developer</h1>
+        <p class="text-gray-500">MERN Stack Developer</p><br>
+      <p class="text-gray-500">Remote | Full-Time | ৳60,000 – ৳90,000 / month</p>
+   <button id="badge-4" class="badge badge-primary badge-soft flex flex-row  h-[36px]">Not Applied</button>
+  <p class="text-gray-500">Work on both frontend and backend to build scalable web applications.</p><br>
+<button onclick="gBadge('badge-4'); interview('offer-4'); add2('rth-4')" class="w-[97px] h-[36px] mr-1 btn btn-outline btn-success">interview</button><div onclick="badge('badge-4'); reject('offer-4'); add1('rth-4')" class="w-[97px] h-[36px] btn btn-outline btn-error">Rejected</div>
+<button onclick="remove('offer-4')" class="btn  btn-erro max-w-8 max-h-8 p-0.5 border border-gray-200 text-gray-500 rounded-4xl absolute top-2.5 right-2.5  "><i class="fa-regular fa-trash-can"></i></button>
+</div></div>
+
+<div id="rth-5">
+        <div id="offer-5" class="offers p-3  w-full h-full bg-base-200 rounded-2xl relative space-y-1.5">
+          <h1 class=" text-2xl">Web Designer</h1>
+        <p class="text-gray-500">Modern Web Designer</p><br>
+      <p class="text-gray-500">Kaliganj, Dhaka| part-Time | ৳15,000 – ৳25,000 / month</p>
+   <button id="badge-5" class="badge badge-primary badge-soft flex flex-row  h-[36px]">Not Applied</button>
+  <p class="text-gray-500">Create modern website layouts and landing pages for clients.</p><br>
+  <button onclick="gBadge('badge-5'); interview('offer-5'); add2('rth-5')" class="w-[97px] h-[36px] mr-1 btn btn-outline btn-success">interview</button><div onclick="badge('badge-5'); reject('offer-5'); add1('rth-5')" class="w-[97px] h-[36px] btn btn-outline btn-error">Rejected</div>
+<button onclick="remove('offer-5')" class="btn btn-erro max-w-8 max-h-8 p-0.5 border border-gray-200 text-gray-500 rounded-4xl absolute top-2.5 right-2.5  "><i class="fa-regular fa-trash-can"></i></button>
+</div></div>
+
+<div id="rth-6">
+        <div id="offer-6" class="offers p-3  w-full h-full bg-base-200 rounded-2xl relative space-y-1.5">
+          <h1 class=" text-2xl">Game Developer</h1>
+        <p class="text-gray-500">Junior Game Developer</p><br>
+      <p class="text-gray-500">Remote | Freelance | ৳30,000 – ৳50,000 / month</p>
+   <button id="badge-6" class="badge badge-primary badge-soft flex flex-row  h-[36px]">Not Applied</button>
+  <p class="text-gray-500">Develop interactive and engaging 3D games using modern game engines.</p><br>
+<button onclick="gBadge('badge-6'); interview('offer-6'); add2('rth-6')" class="w-[97px] h-[36px] mr-1 btn btn-outline btn-success">interview</button><div onclick="badge('badge-6'); reject('offer-6'); add1('rth-6')" class="w-[97px] h-[36px] btn btn-outline btn-error">Rejected</div>
+<button onclick="remove('offer-6')" class="btn btn-erro max-w-8 max-h-8 p-0.5 border border-gray-200 text-gray-500 rounded-4xl absolute top-2.5 right-2.5  "><i class="fa-regular fa-trash-can"></i></button>
+</div></div>
+
+<div id="rth-7">
+        <div id="offer-7" class="offers p-3  w-full h-full bg-base-200 rounded-2xl relative space-y-1.5">
+          <h1 class=" text-2xl">Digital Marketer</h1>
+        <p class="text-gray-500">SEO & Social Media Specialist</p><br>
+      <p class="text-gray-500">Dhaka, Bangladesh | Full-Time | ৳20,000 – ৳45,000 / month</p>
+   <button id="badge-7" class="badge badge-primary badge-soft flex flex-row  h-[36px]">Not Applied</button>
+  <p class="text-gray-500">Manage online campaigns and improve website traffic through digital marketing strategies.</p><br>
+<button onclick="gBadge('badge-7'); interview('offer-7'); add2('rth-7')" class="w-[97px] h-[36px] mr-1 btn btn-outline btn-success">interview</button><div onclick="badge('badge-7'); reject('offer-7');add1('rth-7')" class="w-[97px] h-[36px] btn btn-outline btn-error">Rejected</div>
+<button onclick="remove('offer-7')" class="btn btn-erro max-w-8 max-h-8 p-0.5 border border-gray-200 text-gray-500 rounded-4xl absolute top-2.5 right-2.5  "><i class="fa-regular fa-trash-can"></i></button>
+</div></div>
+
+<div id="rth-8">
+        <div id="offer-8" class="offers p-3  w-full h-full bg-base-200 rounded-2xl relative space-y-1.5">
+          <h1 class=" text-2xl">Software Tester</h1>
+        <p class="text-gray-500">QA Tester</p><br>
+      <p class="text-gray-500">Remote | Internship | ৳10,000 – ৳18,000 / month</p>
+   <button id="badge-8" class="badge badge-primary badge-soft flex flex-row  h-[36px]">Not Applied</button>
+  <p class="text-gray-500">Test software applications and ensure quality before release.</p><br>
+<button onclick="gBadge('badge-8'); interview('offer-8'); add2('rth-8')" class="w-[97px] h-[36px] mr-1 btn btn-outline btn-success">interview</button><div onclick="badge('badge-8'); reject('offer-8'); add1('rth-8')" class="w-[97px] h-[36px] btn btn-outline btn-error">Rejected</div>
+<button onclick="remove('offer-8')" class="btn btn-erro max-w-8 max-h-8 p-0.5 border border-gray-200 text-gray-500 rounded-4xl absolute top-2.5 right-2.5  "><i class="fa-regular fa-trash-can"></i></button>
+</div></div>
+               
+      
+      </section>
+    </main>
+    <section id="interviw" class="hidden  space-y-3">
+     <!-- <h1 class="text-2xl font-bold">Available Jobs</h1><br> -->
+       <div class="flex justify-between">
+          <h1 class="text-2xl font-bold">Available Jobs</h1>
+          <P><span id="inter">0</span> of <span id="job-count-2">8</span> jobs</P>
+        </div>
+        <button id="all-btn"  onclick="hide('offers');  focus('all-btn')" class="btn btn-primary btn-soft w-[80px] h-[32px] mr-2.5">All</button>
+        <button  id="interview-btn"  onclick="hide('interviw'); focus('interview-btn');" class="btn btn-primary  w-[80px] h-[32px] mr-2.5">Interview</button>
+        <button id="rejected-btn"  onclick="hide('rejacted') " class="btn btn-primary btn-soft w-[80px] h-[32px] ">Rejected</button>
+   <div id="file-2" class="w-full h-full bg-base-200 my-1.5 py-35 rounded-2xl">
+      
+      <div class="text-center space-y-1">
+        <img src="jobs.png" class="mx-auto " alt="">
+        <h1 class="text-2xl font-semibold">No jobs available</h1>
+        <p class="text-gray-400">Check back soon for new job opportunities</p>
+      </div>
+      </div>
+    </section>
+    <section id="rejacted" class="hidden space-y-3">
+   <div class="flex justify-between items-center">
+          <h1 class="text-2xl font-bold">Available Jobs</h1>
+          <P><span id="reject">0</span> of <span id="job-count-3">8</span> jobs</P>
+        </div>
+      <!-- <h1 class="text-2xl font-bold">Available Jobs</h1> -->
+        <button id="all-btn"  onclick="hide('offers')" class="btn btn-primary btn-soft w-[80px] h-[32px] mr-2.5">All</button>
+        <button  id="interview-btn"  onclick="hide('interviw')" class="btn btn-primary btn-soft w-[80px] h-[32px] mr-2.5">Interview</button>
+        <button id="rejected-btn"  onclick="hide('interviw')" class="btn btn-primary  w-[80px] h-[32px] ">Rejected</button>
+    <div  id="file-1" class="w-full h-full bg-base-200 my-1.5 py-35 rounded-2xl">
+      <div class="text-center space-y-1">
+        <img src="jobs.png" class="mx-auto " alt="">
+        <h1 class="text-2xl font-semibold">No jobs available</h1>
+        <p class="text-gray-400">Check back soon for new job opportunities</p>
+      </div>
+      <!-- <div id="rejact-file" class="">
+
+      </div> -->
+    </section>
+    <script src="machen.js"></script>
+</body>
+</html>

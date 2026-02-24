@@ -1,0 +1,12 @@
+/* @import "tailwindcss" */
+ /* @plugin "daisyui";
+ @plugin "daisyui" {
+   themes: light --default, dark --prefersdark;
+ } */
+
+.rejacte-boder{
+  border-left:4px solid red ;
+}
+.inter-boder{
+  border-left:4px solid green ;
+}
