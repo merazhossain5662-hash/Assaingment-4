@@ -14,4 +14,9 @@ First of all, we need to create an element using document.createElement("tagName
 ## Question-3:
  What is Event Bubbling? And how does it work?
 # Answer-3:
-Event Bubbling is a prosses where an event starts from the target element and the moves upword to it's parent elements inside the DOM tree.And when we click on en element the event first happens on the clicked element and then it moves to it's parent and then grandparent and continues up to the document.  
+Event Bubbling is a prosses where an event starts from the target element and the moves upword to it's parent elements inside the DOM tree.And when we click on en element the event first happens on the clicked element and then it moves to it's parent and then grandparent and continues up to the document.
+
+## Question-4:
+What is Event Delegation in JavaScript? Why is it useful?
+# Answer-4:
+ Event Delegation is a technique in JavaScript where we add an event listener to a parent element insted of adding event listener to multiple child elements.And it is usefull because it handles dynamically added elements.
